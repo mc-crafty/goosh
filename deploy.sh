@@ -4,10 +4,10 @@ echo "deploy goosh.org";
 echo "wget goosh.js";
 #wget http://gshell.grothkopp.com/goosh.js -O goosh.js.uncompr -o /dev/null
 #wget http://n.goosh.org/g.php -O goosh.js.uncompr -o /dev/null
-php g.php >goosh.js.uncompr
+/g/OTHER/progTools/php/php g.php >goosh.js.uncompr
 
 echo "compress goosh.js";
-java -jar yui/yuicompressor-2.3.5/build/yuicompressor-2.3.5.jar --type js goosh.js.uncompr -o goosh.js.compr.tmp
+java -jar yuicompressor-2.4.8.jar --type js goosh.js.uncompr -o goosh.js.compr.tmp
 
 echo "gzip"
 
@@ -18,7 +18,7 @@ wget 'http://n.goosh.org/?deploy=1' -O goosh.html -o /dev/null
 #exit
 echo "copy files"
 
-cp ../goosh.org/index.html ../goosh.org/index.html-autosave
-cp goosh.html ../goosh.org/index.html
+cp goosh.org/index.html goosh.org/index.html-autosave
+cp goosh.html goosh.org/index.html
 #echo "gzip"
 
