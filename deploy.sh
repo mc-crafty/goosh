@@ -1,10 +1,13 @@
 #!/bin/bash
 
 echo "deploy goosh.org";
+
 #echo "wget goosh.js";
 #wget http://gshell.grothkopp.com/goosh.js -O goosh.js.uncompr -o /dev/null
 #wget http://n.goosh.org/g.php -O goosh.js.uncompr -o /dev/null
-/g/OTHER/progTools/php/php g.php >goosh.js.uncompr
+
+
+php g.php >goosh.js.uncompr
 
 echo "compress goosh.js";
 java -jar yuicompressor-2.4.8.jar --type js goosh.js.uncompr -o goosh.js.compr.tmp
@@ -23,10 +26,13 @@ cat goosh.html-dl | head -n $(($scriptLine-1)) > goosh.html
 cat goosh.js.compr >> goosh.html
 cat goosh.html-dl | tail -n +$(($scriptLine+1)) >> goosh.html
 
-#exit
 echo "copy files"
 
-cp goosh.org/index.html goosh.org/index.html-autosave
+if [ ! -f goosh.org/index.html ]; then
+  mkdir goosh.org
+else
+  cp goosh.org/index.html goosh.org/index.html-autosave
+fi
 cp goosh.html goosh.org/index.html
-#echo "gzip"
+
 
