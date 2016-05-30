@@ -1,0 +1,7 @@
+# exclude built files
+goosh.org/
+goosh.html
+goosh.html-dl
+goosh.js.compr
+goosh.js.compr.tmp
+goosh.js.uncompr
